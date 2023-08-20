@@ -1,0 +1,27 @@
+import 'layout.adom'
+
+Layout [
+  div.user-view [
+    if (data.user) [
+      if (data.user.error) [
+        h1 'User not found.'
+      ] else [
+        h1 'User : {{data.user.id}}'
+        ul.meta [
+          li [ span.label 'Created: {{data.user.created}}' ]
+          li [ span.label 'Karma: {{data.user.karma}}' ]
+          if (data.user.about) [
+            li.about innerHTML={data.user.about} []
+          ]
+        ]
+        p.links [
+          a href='https://news.ycombinator.com/submitted?id={{data.user.id}}' 'submissions'
+          ' | '
+          a href='https://news.ycombinator.com/threads?id={{data.user.id}}' 'comments'
+        ]
+      ]
+    ] else [
+      h1 'User not found.'
+    ]
+  ]
+]

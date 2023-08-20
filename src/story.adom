@@ -1,0 +1,62 @@
+import 'layout.adom'
+
+tag Comment [
+  let c = props.comment
+  let open = false
+
+  li.comment [
+    div.by [
+      a href='/users/{{c.user}}' '{{c.user}}'
+      ' {{c.time_ago}} ago'
+    ]
+    div.text innerHTML={c.content} []
+    if (c.comments | length) [
+      div.toggle class={{ open: open }} [
+        a on:click='open = !open' [
+          '{{open ? "[-]" : "[+]"}} {{c.comments | length}} collapsed'
+        ]
+      ]
+      if (open) [
+        ul.comment-children [
+          each (c in c.comments) [
+            Comment comment={c} []
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+
+Layout [
+  div.item-view [
+    div.item-view-header [
+      a href={data.story.url} target='_blank' [
+        h1 '{{data.story.title}}'
+      ]
+      if (data.story.domain) [
+        span.host '{{data.story.domain}}'
+      ]
+      p.meta [
+        '{{data.story.points}} points | by '
+        a href='/users/{{data.story.user}}' '{{data.story.user}}'
+        ' {{data.story.time_ago}} ago'
+      ]
+    ]
+    div.item-view-comments [
+      p.item-view-comments-header [
+        if (data.story.comments_count) [
+          '{{data.story.comments_count}} comments'
+        ] else [
+          'No comments yet.'
+        ]
+      ]
+      ul.comment-children [
+        if (data.story.comments) [
+          each (c in data.story.comments) [
+            Comment comment={c} []
+          ]
+        ]
+      ]
+    ]
+  ]
+]

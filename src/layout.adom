@@ -1,0 +1,29 @@
+tag Nav [
+  header.header [
+    nav.inner [
+      a href='/top' 'HN'
+      a href='/new' 'New'
+      a href='/show' 'Show'
+      a href='/ask' 'Ask'
+      a href='/job' 'Jobs'
+    ]
+  ]
+]
+
+export tag Layout [
+  html [
+    head [
+      title 'A-DOM Hackernews'
+      meta charset='UTF-8' []
+      meta name='viewport' content='width=device-width, initial-scale=1.0' []
+      meta name='description' content='my site' []
+      link rel='stylesheet' href='/index.css' []
+    ]
+    body [
+      main [
+        Nav []
+        yield
+      ]
+    ]
+  ]
+]

@@ -1,0 +1,58 @@
+import 'layout.adom'
+
+tag StoryItem [
+  let s = props.story
+
+  li.news-item [
+    span.score '{{s.points || 0}}'
+    span.title [
+      if (s.url && (s.url | indexof 'item?id=') != 0) [
+        a href={s.url} target='_blank' rel='noreferrer' '{{s.title}}'
+        span.host '({{s.domain}})'
+      ] else [
+        a href='/item/{{s.id}}' '{{s.title}}'
+      ]
+    ]
+    br[]
+    span.meta [
+      if (s.type != 'job') [
+        'by '
+        a href='/users/{{s.user}}' '{{s.user}}'
+        ' {{s.time_ago}} | '
+        a href='/item/{{s.id}}' [
+          if (s.comments_count) [
+            '{{s.comments_count}} comments'
+          ] else [
+            'discuss'
+          ]
+        ]
+      ] else [
+        a href='/stories/{{s.id}}' '{{s.time_ago}}'
+      ]
+    ]
+  ]
+]
+
+Layout [
+  div.news-view [
+    div.news-list-nav [
+      if (data.page > 0) [
+        a.page-link
+          href='/{{data.type}}?page={{data.page-1}}'
+          '< prev'
+      ]
+      if (data.page > 0) [
+        a.page-link
+          href='/{{data.type}}?page={{data.page+1}}'
+          'more >'
+      ]
+    ]
+    main.news-list [
+      ul [
+        each (story in data.stories) [
+          StoryItem story={story} []
+        ]
+      ]
+    ]
+  ]
+]
