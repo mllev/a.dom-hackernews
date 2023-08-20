@@ -34,6 +34,7 @@ adom.serve({
   publicDir: './public',
   cache: prod,
   minify: prod,
+  stream: true,
   routes: {
     '/': {
       input: './src/index.adom',
