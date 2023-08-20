@@ -2,7 +2,7 @@ import 'layout.adom'
 
 tag Comment [
   let c = props.comment
-  let open = false
+  let open = true
 
   li.comment [
     div.by [

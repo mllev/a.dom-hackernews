@@ -41,6 +41,7 @@ Layout [
           href='/{{data.type}}?page={{data.page-1}}'
           '< prev'
       ]
+      span ' Page {{data.page}} '
       if (data.page > 0) [
         a.page-link
           href='/{{data.type}}?page={{data.page+1}}'

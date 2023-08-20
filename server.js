@@ -15,7 +15,7 @@ async function storiesHandler(req) {
   const type = mapStories[req.params.type || 'top'];
   if (!type) return null;
   const stories = await adom.request(`https://api.hackerwebapp.com/${type}?page=${page}`);
-  return { stories, page, type: req.params.type };
+  return { stories, page, type: req.params.type || 'top' };
 }
 
 async function storyHandler(req) {
@@ -37,11 +37,11 @@ adom.serve({
   stream: true,
   routes: {
     '/': {
-      input: './src/index.adom',
+      input: './src/stories.adom',
       data: storiesHandler
     },
     '/:type': {
-      input: './src/index.adom',
+      input: './src/stories.adom',
       data: storiesHandler
     },
     '/item/:id': {
