@@ -20,10 +20,8 @@ export tag Layout [
       link rel='stylesheet' href='/index.css' []
     ]
     body [
-      main [
-        Nav []
-        yield
-      ]
+      Nav []
+      yield
     ]
   ]
 ]
