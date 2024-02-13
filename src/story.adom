@@ -13,8 +13,8 @@ tag Comment [
     if (c.comments | length) [
       div.toggle class={{ open: open }} [
         a on:click='open = !open' [
-          if (open) '[-]'
-          else '[+] {{c.comments | length}} collapsed'
+          if (open) [ '[-]' ]
+          else [ '[+] {{c.comments | length}} collapsed' ]
         ]
       ]
       if (open) [
