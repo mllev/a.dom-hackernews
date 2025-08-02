@@ -1,4 +1,4 @@
-import 'layout.adom'
+import 'layout.light'
 
 tag Comment [
   let c = props.comment

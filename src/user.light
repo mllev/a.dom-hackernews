@@ -1,4 +1,4 @@
-import 'layout.adom'
+import 'layout.light'
 
 Layout [
   div.user-view [

@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "a.dom-hackernews",
   "version": "1.0.0",
   "description": "",
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "adom-js": "^0.20.17"
+    "@cilix/lightjs": "^0.0.2",
+    "node-fetch": "^3.3.2"
   }
 }

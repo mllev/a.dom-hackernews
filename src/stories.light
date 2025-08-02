@@ -1,4 +1,4 @@
-import 'layout.adom'
+import 'layout.light'
 
 tag StoryItem [
   let s = props.story
@@ -36,15 +36,15 @@ tag StoryItem [
 Layout [
   div.news-view [
     div.news-list-nav [
-      if (data.page > 0) [
-        a.page-link
-          href='/{{data.type}}?page={{data.page-1}}'
+      if (data.page > 1) [
+        a.page-link.butt-stuff
+          href='/{{data.type}}?page={{data.page - 1}}'
           '< prev'
       ]
       span ' Page {{data.page}} '
-      if (data.page > 0) [
+      if (data.page >= 1) [
         a.page-link
-          href='/{{data.type}}?page={{data.page+1}}'
+          href='/{{data.type}}?page={{data.page + 1}}'
           'more >'
       ]
     ]
